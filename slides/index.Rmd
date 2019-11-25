@@ -348,7 +348,7 @@ as_table(example[1:4,])
 
 ```{r reveal-height, fig.height = 3.5, fig.width = 8, out.width = "150%"}
 # anim_height_reveal()
-include_graphics("figures/reveal-height-1.gif")
+include_graphics("gifs/reveal-height-1.gif")
 ```
 
 ---
@@ -410,7 +410,7 @@ gg_heights() +
 
 ```{r animate-all-data}
 # anim_height_appear()
-include_graphics("figures/animate-all-data-1.gif")
+include_graphics("gifs/animate-all-data-1.gif")
 ```
 
 ---
@@ -1234,7 +1234,7 @@ heights_flat_combine_var <- bind_rows(spaghetti = as_tibble(heights),
 #   ease_aes("cubic-in-out")
 # 
 # animate(anim_flat, nframes = 24, duration = 6)
-include_graphics("figures/anim-line-flat-max-1.gif")
+include_graphics("gifs/anim-line-flat-max-1.gif")
 ```
 
 
@@ -1863,12 +1863,3 @@ gg_heights_near
   - Find the best, worst, middle of the ground residuals
   - follow the "gliding" process again.
   
-- Which are most similar to which stats?
-  - "who is similar to me?"
-  - "who is the most average?"
-  - "who is the most extreme?"
-  - "Who is the most different to me?"
-
-# EDA: Why it's worth it
-
-Anscombe's quartet
