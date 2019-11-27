@@ -106,13 +106,13 @@ Undergraduate in Psychology
 ## (My personal) motivation
 
 .large.pull-left[
-A lot of research in new statistical methods - imputation, inference, prediction
+**A lot** of research in new statistical methods, e.g., imputation, inference, prediction
 ]
 
 --
 
 .large.pull-right[
-Not much research on how we explore our data, and the methods that we use to do this.
+**Not much** research on **how** we explore data
 ]
 
 ---
@@ -611,17 +611,17 @@ sample_n_keys(heights, 5)
 
 
 ```
-## # A tsibble: 61 x 3 [!]
+## # A tsibble: 32 x 3 [!]
 ## # Key:       country [5]
-##   country  year height_cm
-##   &lt;chr&gt;   &lt;dbl&gt;     &lt;dbl&gt;
-## 1 Canada   1810      172.
-## 2 Canada   1820      172.
-## 3 Canada   1830      172.
-## 4 Canada   1840      170.
-## 5 Canada   1850      172.
-## 6 Canada   1860      172 
-## # … with 55 more rows
+##   country     year height_cm
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Congo, DRC  1810      163.
+## 2 Congo, DRC  1870      166.
+## 3 Congo, DRC  1880      163.
+## 4 Congo, DRC  1890      163.
+## 5 Congo, DRC  1910      165.
+## 6 Congo, DRC  1920      163.
+## # … with 26 more rows
 ```
 
 ---
@@ -770,7 +770,7 @@ Do I want `length.out` or `times`?
 
 ---
 
-&lt;img src="imgs/what-year-is-it.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="imgs/what-year-is-it.jpg" width="70%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -780,7 +780,7 @@ Do I want `length.out` or `times`?
 --
 
 .large[
-We can blame ourselves when we are distracted for not being better.
+We can blame ourselves when we are distracted for **not being better**.
 ]
 
 --
@@ -812,8 +812,7 @@ We need to make things **as easy as reasonable**, with the least amount of distr
 
 
 ```r
-heights_plot +
-  facet_sample(
+facet_sample(
 *   n_per_facet = 3,
 *   n_facets = 9
   )
@@ -859,7 +858,7 @@ ggplot(heights,
 
 ---
 
-# How to see all individuals?
+# How to see **all** individuals?
 
 --
 
@@ -869,15 +868,15 @@ ggplot(heights,
 ```r
 ggplot(heights,
        aes(x = year,
-             y = height_cm,
-             group = country)) + 
+           y = height_cm,
+           group = country)) + 
   geom_line() + 
 * facet_strata()
 ```
 
 ---
 
-# `facet_strata()`: See all individuals
+# `facet_strata()`: See **all** individuals
 
 &lt;img src="figures/print-gg-facet-strata-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
@@ -899,8 +898,8 @@ In asking these questions we can solve something else interesting
 ```r
 ggplot(heights,
        aes(x = year,
-             y = height_cm,
-             group = country)) + 
+           y = height_cm,
+           group = country)) + 
   geom_line() + 
 * facet_strata(along = -year)
 ```
@@ -934,12 +933,15 @@ ggplot(heights,
 --
 
 .pull-right[
-"How many facets to shove all the data in?"
+"How many facets to put all the data in?"
+
+"How to arrange plots **along**?"
 
 
 ```r
   facet_strata(
 *   n_strata = 10,
+*   along = -year
     ) 
 ```
 
@@ -986,9 +988,9 @@ Store useful information
 
 View subsamples of data
 
-View many subsamples
+View **many** subsamples
 
-View all subsamples
+View **all** subsamples
 
 ]
 
@@ -1032,23 +1034,24 @@ View all subsamples
 class: inverse, center, middle
 
 .huge[
-**A workflow** 
+A workflow
 ]
 
 --
 
 .huge[
-**Define what is interesting**
+Define what is interesting
 ]
-
-
----
-
-### Define what is interesting (maximum)
 
 --
 
-### Identify features: Summarise to one observation per **key**
+.huge[
+maximum height
+]
+
+---
+
+## Identify features: one observation per **key**
 
 
 
@@ -1058,14 +1061,14 @@ class: inverse, center, middle
 
 ---
 
-### Identify features: Summarise to one observation per **key**
+## Identify features: one observation per **key**
 
 &lt;img src="figures/show-line-range-point-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 
 ---
 
-### Identify features: Summarise to one observation per **key**
+## Identify features: one observation per **key**
 
 &lt;img src="figures/gg-show-point-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
@@ -1109,7 +1112,7 @@ Let's see that **one more time**, but with the data
 
 ---
 
-## Identify features: summarise down to one observation
+## Identify features: one observation per **key**
 
 
 ```
@@ -1132,7 +1135,7 @@ Let's see that **one more time**, but with the data
 
 ---
 
-## Identify features: summarise down to one observation
+## Identify features: one observation per **key**
 
 
 
@@ -1319,7 +1322,7 @@ Such as:
 
 - `feat_acf`: autocorrelation-based features
 - `feat_stl`: STL (Seasonal, Trend, and Remainder by LOESS) decomposition
-- [Create your own features (from brolgar.njtierney.com)](http://brolgar.njtierney.com/articles/finding-features.html#creating-your-own-features)
+- [Create your own features](http://brolgar.njtierney.com/articles/finding-features.html#creating-your-own-features)
 ]
 
 
@@ -1335,7 +1338,7 @@ Such as:
 1. Longitudinal data is a time series
 2. Specify structure once, get a free lunch.
 3. Look at as much of the raw data as possible 
-4. Use `facet_sample()` / `facet_strata()` to look at data
+4. Use `facet_sample()` / `facet_strata()`
 ]
 
 ---
@@ -1356,7 +1359,7 @@ Such as:
 # Future Directions
 
 .large[
-- More features
+- More features (summaries)
 - Generalise beyond time series
 - Explore stratification process
 ]
@@ -1365,11 +1368,14 @@ Such as:
 
 # Thanks
 
-.medium[
+.large.pull-left[
 - Di Cook
 - Tania Prvan
 - Stuart Lee
 - Mitchell O'Hara Wild
+]
+
+.large.pull-right[
 - Earo Wang
 - Rob Hyndman
 - Miles McBain

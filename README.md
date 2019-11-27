@@ -2,7 +2,7 @@
 
 # Learn more at [brolgar.njtierney.com](http://brolgar.njtierney.com/)
 
-# Slide available at [here](https://bit.ly/njt-wombat)
+# Slide available [here](https://bit.ly/njt-wombat)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d628115f-4978-495f-afb4-dba4a4017de5/deploy-status)](https://app.netlify.com/sites/njt-wombat/deploys)
 

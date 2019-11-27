@@ -859,7 +859,7 @@ Do I want `length.out` or `times`?
 
 ---
 
-```{r what-year-is-it, out.width = "50%"}
+```{r what-year-is-it, out.width = "70%"}
 include_graphics("imgs/what-year-is-it.jpg")
 ```
 
@@ -871,7 +871,7 @@ include_graphics("imgs/what-year-is-it.jpg")
 --
 
 .large[
-We can blame ourselves when we are distracted for not being better.
+We can blame ourselves when we are distracted for **not being better**.
 ]
 
 --
@@ -951,7 +951,7 @@ ggplot(heights,
 
 ---
 
-# How to see all individuals?
+# How to see **all** individuals?
 
 --
 
@@ -960,15 +960,15 @@ ggplot(heights,
 ```{r gg-facet-strata, echo = TRUE, eval = FALSE}
 ggplot(heights,
        aes(x = year,
-             y = height_cm,
-             group = country)) + 
+           y = height_cm,
+           group = country)) + 
   geom_line() + 
   facet_strata() #<<
 ```
 
 ---
 
-# `facet_strata()`: See all individuals
+# `facet_strata()`: See **all** individuals
 
 ```{r print-gg-facet-strata, ref.label='gg-facet-strata'}
 ```
@@ -991,8 +991,8 @@ In asking these questions we can solve something else interesting
 ```{r gg-facet-strata-along, echo = TRUE, eval = FALSE}
 ggplot(heights,
        aes(x = year,
-             y = height_cm,
-             group = country)) + 
+           y = height_cm,
+           group = country)) + 
   geom_line() + 
   facet_strata(along = -year) #<<
 ```
@@ -1026,11 +1026,14 @@ ggplot(heights,
 --
 
 .pull-right[
-"How many facets to shove all the data in?"
+"How many facets to put all the data in?"
+
+"How to arrange plots **along**?"
 
 ```{r demo-facet-strata, eval = FALSE, echo = TRUE}
   facet_strata(
     n_strata = 10, #<<
+    along = -year #<<
     ) 
 ```
 
@@ -1077,9 +1080,9 @@ Store useful information
 
 View subsamples of data
 
-View many subsamples
+View **many** subsamples
 
-View all subsamples
+View **all** subsamples
 
 ]
 
@@ -1142,7 +1145,7 @@ maximum height
 
 ---
 
-## Identify features: Summarise to one observation per **key**
+## Identify features: one observation per **key**
 
 ```{r anim-line-flat, cache = TRUE}
 set.seed(2019-09-30-0012)
@@ -1191,7 +1194,7 @@ include_graphics("gifs/anim-line-flat-max-1.gif")
 
 ---
 
-## Identify features: Summarise to one observation per **key**
+## Identify features: one observation per **key**
 
 ```{r show-line-range-point}
 heights_feature_flat_point <- heights_feature_flat %>%
@@ -1214,7 +1217,7 @@ gg_id_features_line_point
 
 ---
 
-## Identify features: Summarise to one observation per **key**
+## Identify features: one observation per **key**
 
 ```{r gg-show-point}
 
@@ -1343,7 +1346,7 @@ Let's see that **one more time**, but with the data
 
 ---
 
-## Identify features: Summarise to one observation per **key**
+## Identify features: one observation per **key**
 
 ```{r print-heights-again}
 heights
@@ -1351,7 +1354,7 @@ heights
 
 ---
 
-## Identify features: Summarise to one observation per **key**
+## Identify features: one observation per **key**
 
 ```{r create-feature-five-1}
 heights_five <- heights %>%
@@ -1488,11 +1491,14 @@ Such as:
 
 # Thanks
 
-.medium[
+.large.pull-left[
 - Di Cook
 - Tania Prvan
 - Stuart Lee
 - Mitchell O'Hara Wild
+]
+
+.large.pull-right[
 - Earo Wang
 - Rob Hyndman
 - Miles McBain
