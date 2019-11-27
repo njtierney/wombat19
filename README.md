@@ -1,15 +1,10 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # Making better spaghetti (plots): Exploring the individuals in longitudinal data with the brolgar package
-
-<!-- badges: start -->
-
-<!-- badges: end -->
 
 # Learn more at [brolgar.njtierney.com](http://brolgar.njtierney.com/)
 
-# Slide available at [bit.ly/njt-wombat](https://bit.ly/njt-wombat)
+# Slide available at [here](https://bit.ly/njt-wombat)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d628115f-4978-495f-afb4-dba4a4017de5/deploy-status)](https://app.netlify.com/sites/njt-wombat/deploys)
 
 # Take home messages
 
@@ -51,6 +46,7 @@ longitudinal data.
   - Earo Wang
   - Rob Hyndman
   - Miles McBain
+  - Hadley Wickham
   - Monash University
 
 # Resources
@@ -75,7 +71,7 @@ longitudinal data.
 
 # bio
 
-Dr. Nicholas Tierney (PhD. Statistics, BPsySci (Honours)) is a Research
+Dr. Nicholas Tierney (PhD. Statistics, BPsySci (Honours)) is a Research
 Fellow in Statistics at Monash University, working with Professors
 Dianne Cook and Rob Hyndman. His research aims to improve data analysis
 workflow. Crucial to this work is producing high quality software to
@@ -88,5 +84,5 @@ optimisation, Bayesian Data Analysis, and MCMC diagnostics.
 Nick is a member of the rOpenSci collective, which works to make science
 open using R, has been the lead organiser for the rOpenSci ozunconf
 events from 2016-2018, and co-hosts the rstats podcast “Credibly
-Curious” with Dr. Saskia Freytag. Outside of research, Nick likes to
+Curious” with Dr. Saskia Freytag. Outside of research, Nick likes to
 hike, rockclimb, bake sourdough, knit hats, and explore new hobbies.
