@@ -82,7 +82,8 @@ heights <- heights %>%
 
 example <- heights %>%
   filter(country == "Australia",
-         year >= 1910) 
+         year >= 1910) %>% 
+  mutate(height_cm = round(height_cm))
 
 # **ni**ck's **pa**lette
 nipa <- list(red = "#c03018",
@@ -138,6 +139,11 @@ gg_heights <- function(data){
 ```
 
 ---
+class: inverse, middle, center
+
+# A Bit About Me
+
+---
 
 ## Background: Undergraduate
 
@@ -175,19 +181,6 @@ include_graphics("imgs/bw-mountains.jpg")
 
 ]
 
-???
-
-I started a PhD in statistics at QUT, under (now distinguished) Professor Kerrie Mengersen, Looking at people's health over time.
-
-- There were several things that I noticed:
-  - There were equations, but not as many clear-cut, black and white answers
-  
----
-
-## Journey of Analytic Discovery
-
-- map
-
 ---
 
 ## Background: PhD
@@ -207,18 +200,33 @@ include_graphics("imgs/explorer.jpg")
 
 ]
 
+
+
+---
+
+# EDA: Why it's worth it
+
+--
+
+```{r dino-saurus}
+include_graphics("gifs/dino-saurus.gif")
+```
+
+-- From ["Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing"](https://www.autodeskresearch.com/publications/samestats)
+
+
 ---
 
 ## (My personal) motivation
 
-.large[
-A lot of research in new statistical methods - imputation, inference, prediction
+.large.pull-left[
+**A lot** of research in new statistical methods, e.g., imputation, inference, prediction
 ]
 
 --
 
-.large[
-Not much research on how we explore our data, and the methods that we use to do this.
+.large.pull-right[
+**Not much** research on **how** we explore data
 ]
 
 ---
@@ -248,18 +256,6 @@ My research:
 
 Design and improve tools for (exploratory) data analysis
 ]
-
----
-
-# EDA: Why it's worth it
-
---
-
-```{r dino-saurus}
-include_graphics("gifs/dino-saurus.gif")
-```
-
--- From ["Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing"](https://www.autodeskresearch.com/publications/samestats)
 
 ---
 class: inverse, middle, center
@@ -353,16 +349,6 @@ include_graphics("gifs/reveal-height-1.gif")
 
 ---
 
-```{r gg-example, fig.height = 3.5, fig.width = 8, out.width = "150%"}
-ggplot(example,
-       aes(x = year,
-           y = height_cm)) + 
-  geom_point() + 
-  geom_line()
-```
-
----
-
 # All of Australia
 
 ```{r gg-all-australia}
@@ -388,21 +374,6 @@ gg_heights() +
        y = range(heights$height_cm))
 ```
 
-
----
-
-# ... And Afghanistan and Albania
-
-```{r sample-more-heights}
-heights %>%
-  filter(country %in% c("Australia",
-                        "Afghanistan",
-                        "Albania",
-                        "New Zealand")) %>%
-gg_heights() + 
-  lims(x = range(heights$year),
-       y = range(heights$height_cm))
-```
 
 ---
 
@@ -446,7 +417,9 @@ gg_heights(heights)
 
 ---
 
-# Does transparency help?
+# Answers: Transparency?
+
+--
 
 ```{r gg-show-all-w-alpha}
 ggplot(heights,
@@ -458,7 +431,7 @@ ggplot(heights,
 
 ---
 
-# Does transparency + a model help?
+# Answers: Transparency + a model?
 
 ```{r gg-show-all-w-model}
 gg_height_lm <- 
@@ -475,24 +448,9 @@ gg_height_lm
 ???
 
 - This helps reduce the overplotting
+- It's not that this is wrong, it is useful - but we lose the individuals
 - We only get the overall average. We dont get the rest of the information
-
----
-
-# This is still useful
-
-```{r show-height-lm}
-gg_height_lm
-```
-
-???
-
-- We get information on what the average is, and how that behaves
-- But we don't get the full story
-- So, it depends on your need. If you have a designed experiment, where you stated that you would run some analysis, then you are doing this.
-- ... But even then, wouldn't you rather _explore_ the data?
-- Who fits the models well / worst / best?
-
+- How do we even get started?
 ---
 
 
@@ -532,25 +490,6 @@ gg_height_highlight
 - But it can be really _ill suited_ for some individual
 - Exploring this is somewhat clumsy - we need another way to explore
 
-
----
-
-# How do we get the most out of this plot?
-
-
-```{r gg-height-highlight-2}
-gg_height_highlight
-```
-
----
-
-# How do I even get started?!
-
-
-```{r gg-height-highlight-3}
-gg_height_highlight
-```
-
 ---
 class: inverse, middle 
 
@@ -564,11 +503,6 @@ Problem #1: How do I look at **some** of the data?
 Problem #2: How do I find **interesting** observations?
 ]
 
---
-
-.large[
-Problem #3: How do I **understand** my statistical model
-]
 
 ---
 
@@ -611,9 +545,12 @@ class: inverse, middle, center
 
 # What is longitudinal data?
 
+--
+
 .vlarge[
 > Something observed sequentially over time
 ]
+
 ---
 class: inverse, middle, center
 
@@ -780,29 +717,31 @@ gg_sample_keys
 # Problem #1: How do I look at **some** of the data?
 
 
-.large.left[
+.large[
 ~~Look at subsamples~~
-]
-
-.large.right[
-Sample **keys**
 ]
 
 --
 
-.large.left[
+.large[
+Sample **keys** with `sample_n_keys()`
+]
+
+--
+
+.large[
 Look at **many** subsamples
 ]
 
 --
 
-.large.right[
+.largeright[
 **?**
 ]
 
 ---
 
-# Look at many subsamples
+# Portion out your spaghetti! `r emo::ji("spaghetti")` `r emo::ji("spaghetti")` `r emo::ji("spaghetti")` `r emo::ji("spaghetti")`
 
 ```{r all-heights}
 gg_heights(heights)
@@ -810,7 +749,7 @@ gg_heights(heights)
 
 ---
 
-# Look at many subsamples
+# Look at **one** set of subsamples `r emo::ji("spaghetti")`
 
 ```{r all-heights-samples}
 gg_sample_keys
@@ -818,7 +757,7 @@ gg_sample_keys
 
 ---
 
-# Look at many subsamples
+# Look at **many** subsamples `r emo::ji("spaghetti")` `r emo::ji("spaghetti")`
 
 ```{r heights-strata}
 gg_heights(heights) + 
@@ -871,8 +810,11 @@ gg_heights(heights) +
 --
 
 .large[
-> If you have to solve 3+ substantial smaller problems in order to solve a larger problem, your focus shifts from the current goal to something else. 
-You are distracted.
+> If solving a problem requires solving **3+ smaller problems**
+
+> Your focus shifts from the current goal to something else. 
+
+> You are distracted.
 
 ]
 
@@ -917,6 +859,13 @@ Do I want `length.out` or `times`?
 
 ---
 
+```{r what-year-is-it, out.width = "50%"}
+include_graphics("imgs/what-year-is-it.jpg")
+```
+
+
+---
+
 # Avoiding the rabbit hole
 
 --
@@ -940,19 +889,20 @@ We need to make things **as easy as reasonable**, with the least amount of distr
 
 ---
 
-# Removing the distraction threshold means asking the most relevant question
+# Remove distraction by asking relevant questions
 
 --
 
 .large[
+> How many keys per facet?
+
 > How many plots do I want to look at?
 ]
 
 --
 
 ```{r show-facet-sample, echo = TRUE, eval = FALSE}
-heights_plot +
-  facet_sample(
+facet_sample(
     n_per_facet = 3, #<<
     n_facets = 9 #<<
   )
@@ -1001,7 +951,11 @@ ggplot(heights,
 
 ---
 
-# `facet_strata()`: See all individuals
+# How to see all individuals?
+
+--
+
+# `facet_strata()`
 
 ```{r gg-facet-strata, echo = TRUE, eval = FALSE}
 ggplot(heights,
@@ -1061,7 +1015,6 @@ ggplot(heights,
 "How many facets?"
 
 ```{r demo-facet-sample, eval = FALSE, echo = TRUE}
-ggplot + 
   facet_sample(
     n_per_facet = 10, #<<
     n_facets = 12 #<<
@@ -1076,7 +1029,6 @@ ggplot +
 "How many facets to shove all the data in?"
 
 ```{r demo-facet-strata, eval = FALSE, echo = TRUE}
-ggplot + 
   facet_strata(
     n_strata = 10, #<<
     ) 
@@ -1165,18 +1117,6 @@ View all subsamples
 
 ## Problem #2: How do I find **interesting** observations?
 
-```{r quite-interesting-obs}
-ggplot(heights,
-       aes(x = year,
-             y = height_cm,
-             group = country)) + 
-  geom_line()
-```
-
----
-
-## Problem #2: How do I find **interesting** observations?
-
 ```{r quite-interesting-obs-2}
 gg_height_highlight
 ```
@@ -1185,13 +1125,24 @@ gg_height_highlight
 class: inverse, center, middle
 
 .huge[
-**Define** interesting?
+A workflow
 ]
 
+--
+
+.huge[
+Define what is interesting
+]
+
+--
+
+.huge[
+maximum height
+]
 
 ---
 
-## Identify features: summarise down to one observation
+## Identify features: Summarise to one observation per **key**
 
 ```{r anim-line-flat, cache = TRUE}
 set.seed(2019-09-30-0012)
@@ -1240,7 +1191,7 @@ include_graphics("gifs/anim-line-flat-max-1.gif")
 
 ---
 
-## Identify features: summarise down to one observation
+## Identify features: Summarise to one observation per **key**
 
 ```{r show-line-range-point}
 heights_feature_flat_point <- heights_feature_flat %>%
@@ -1263,7 +1214,7 @@ gg_id_features_line_point
 
 ---
 
-## Identify features: summarise down to one observation
+## Identify features: Summarise to one observation per **key**
 
 ```{r gg-show-point}
 
@@ -1392,7 +1343,7 @@ Let's see that **one more time**, but with the data
 
 ---
 
-## Identify features: summarise down to one observation
+## Identify features: Summarise to one observation per **key**
 
 ```{r print-heights-again}
 heights
@@ -1400,7 +1351,7 @@ heights
 
 ---
 
-## Identify features: summarise down to one observation
+## Identify features: Summarise to one observation per **key**
 
 ```{r create-feature-five-1}
 heights_five <- heights %>%
@@ -1457,32 +1408,6 @@ print(heights_five, n = 6)
 
 ---
 
-## features: Summaries that are **aware of data structure** <img src="https://feasts.tidyverts.org/reference/figures/logo.png" align="right" height=140/>
-
---
-
-```{r show-features-2, echo = TRUE, eval = FALSE}
-heights %>%
-  features(height_cm, #<< # variable we want to summarise
-           feat_five_num) #<< # feature to calculate
-```
-
---
-
-```{r create-feature-five-2}
-heights_five <- heights %>%
-  features(height_cm, #<<
-           feat_five_num) #<<
-
-print(heights_five, n = 6)
-```
-
----
-class: middle, center
-# Other available `features()` in `brolgar` 
-
----
-
 ## What is the range of the data? `feat_ranges`
 
 ```{r features-feat-ranges, echo = TRUE}
@@ -1517,239 +1442,10 @@ Such as:
 
 - `feat_acf`: autocorrelation-based features
 - `feat_stl`: STL (Seasonal, Trend, and Remainder by LOESS) decomposition
+- [Create your own features](http://brolgar.njtierney.com/articles/finding-features.html#creating-your-own-features)
 ]
 
 
----
-
-## features: what is `feat_five_num?` <img src="https://feasts.tidyverts.org/reference/figures/logo.png" align="right" height=140/>
-
---
-
-```{r show-feat-five-num, echo = TRUE}
-feat_five_num
-```
-
-
----
-
-## features: what is `feat_five_num?` <img src="https://feasts.tidyverts.org/reference/figures/logo.png" align="right" height=140/>
-
-.huge[
-[Create your own features (from brolgar.njtierney.com)](http://brolgar.njtierney.com/articles/finding-features.html#creating-your-own-features)
-]
-
-
----
-
-# ~~Problem #1: How do I look at **some** of the data?~~
-
---
-
-# Problem #2: How do I find **interesting** observations?
-
---
-
-.large[
-- Decide what features are interesting
-- Summarise down to one observation
-- Decide how to filter 
-- Join this feature back to the data
-]
-
----
-
-# ~~Problem #1: How do I look at **some** of the data?~~
-
-# ~~Problem #2: How do I find **interesting** observations?~~
-
---
-
-# Problem #3: How do I **understand** my statistical model
-
-
----
-
-# Problem #3: How do I **understand** my statistical model
-
-.medium[
-Let's fit a simple mixed effects model to the data
-
-Fixed effect of year + Random intercept for country
-]
-
-```{r fit-lme4, echo = TRUE}
-heights_fit <- lmer(height_cm ~ year + (1|country), heights)
-
-heights_aug <- heights %>%
-  add_predictions(heights_fit, var = "pred") %>%
-  add_residuals(heights_fit, var = "res")
-```
-
----
-
-# Problem #3: How do I **understand** my statistical model
-
-
-```{r lme4-augment}
-heights_aug
-```
-
----
-
-# Problem #3: How do I **understand** my statistical model
-
-```{r fits}
-gg_heights_fit <- 
-ggplot(heights_aug,
-       aes(x = year,
-           y = pred,
-           group = country)) + 
-  geom_line() 
-
-gg_heights_fit
-```
-
----
-
-## Look at subsamples?
-
---
-
-```{r subsamples-heights}
-heights_aug %>% 
-  sample_n_keys(5) %>% 
-ggplot(aes(x = year,
-           y = pred,
-           group = country)) + 
-  geom_line() 
-```
-
-
----
-
-## Look at **many** subsamples?
-
---
-
-```{r heights-fit-facet-sample, echo = TRUE, out.width = "70%"}
-gg_heights_fit + facet_sample()
-```
-
----
-
-## Look at **all** subsamples?
-
-```{r heights-fit-facet-strata, echo = TRUE, out.width = "70%"}
-gg_heights_fit + facet_strata()
-```
-
----
-
-## Look at **all** subsamples **along** residuals?
-
-```{r heights-fit-facet-strata-res, echo = TRUE, out.width = "70%"}
-gg_heights_fit + facet_strata(along = -res)
-```
-
----
-
-# Look at the predictions with the data?
-
-```{r small-sample, eval = FALSE, echo = TRUE}
-set.seed(2019-11-13)
-heights_sample <- 
-heights_aug %>%
-  sample_n_keys(size = 9) %>% #<< sample the data
-  ggplot(aes(x = year,
-             y = pred,
-             group = country)) + 
-  geom_line() +
-  facet_wrap(~country)
-
-heights_sample
-```  
-
----
-
-# Look at the predictions with the data?
-
-```{r small-sample-out, ref.label = 'small-sample', echo = FALSE, out.width = "100%"}
-
-```
-
----
-
-# Look at the predictions with the data?
-
-```{r small-sample-add-real-data, echo = TRUE, out.width = "70%"}
-heights_sample + geom_point(aes(y = height_cm))
-```  
-
----
-
-# What if we grabbed a sample of those who have the best, middle, and worst residuals? 
-
---
-
-```{r summary-residuals, echo = TRUE}
-summary(heights_aug$res)
-```
-
---
-
-.large[
-Which countries are **nearest** to these statistics?
-]
-
----
-
-# use `keys_near()`
-
-.pull-left[
-```{r keys-near, echo = TRUE}
-heights_aug %>%
-  keys_near(key = country,
-            var = res)
-```
-]
-
-.pull-right[
-```{r save-keys-near}
-heights_near <- heights_aug %>%
-  keys_near(key = country,
-            var = res)
-```
-
-> This shows us the keys that closely match the five number summary. 
-
-]
-
----
-
-## Show data by joining it with residuals, to explore spread
-
-```{r plot-join-aug}
-library(stickylabeller)
-
-heights_near_aug <- left_join(heights_near,
-          heights_aug,
-          by = "country")
-
-gg_heights_near <-
-ggplot(heights_near_aug,
-       aes(x = year,
-             y = pred,
-             group = country,
-             colour = country)) + 
-  geom_line() + 
-  geom_point(aes(y = height_cm)) + 
-  facet_wrap(~stat + country,
-             labeller = label_glue("Country: {country} \nNearest to {stat} residual")) + 
-  theme(legend.position = "none")
-
-gg_heights_near
-```  
 
 ---
 
@@ -1762,7 +1458,7 @@ gg_heights_near
 1. Longitudinal data is a time series
 2. Specify structure once, get a free lunch.
 3. Look at as much of the raw data as possible 
-4. Use `facet_sample()` / `facet_strata()` to look at data
+4. Use `facet_sample()` / `facet_strata()`
 ]
 
 ---
@@ -1780,22 +1476,19 @@ gg_heights_near
 
 ---
 
-# Take homes
-
-## Problem #3: How do I **understand** my statistical model
+# Future Directions
 
 .large[
-1. Look at (one, more or all!) subsamples
-1. Arrange subsamples
-1. Find keys near some summary 
-1. Join keys to data to explore representatives
+- More features (summaries)
+- Generalise beyond time series
+- Explore stratification process
 ]
 
 ---
 
 # Thanks
 
-.large[
+.medium[
 - Di Cook
 - Tania Prvan
 - Stuart Lee
@@ -1803,6 +1496,7 @@ gg_heights_near
 - Earo Wang
 - Rob Hyndman
 - Miles McBain
+- Hadley Wickham
 - Monash University
 ]
 
@@ -1853,13 +1547,3 @@ gg_heights_near
 .vhuge[
 **End.**
 ]
-
-???
-
-- now let's go through these same principles:
-  - Sample the fits
-  - Many samples of the fits
-  - Explore the residuals
-  - Find the best, worst, middle of the ground residuals
-  - follow the "gliding" process again.
-  

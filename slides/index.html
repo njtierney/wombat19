@@ -16,13 +16,13 @@ class: left, middle, inverse, title-slide
 # Exploring and understanding the individual experience from longitudinal data, or…
 ## <em>How to make better spaghetti (plots)</em>
 ### <span style="font-size: 90%;">Nicholas Tierney, Monash University</span>
-### <span style="font-size: 90%;">OzVis <br><br> Thursday 21st November, 2019 </span><br><br> <i class="fas  fa-link "></i> <a href="https://bit.ly/njt-ozvis">bit.ly/njt-ozvis</a><br><br><i class="fab  fa-twitter "></i> <a href="https://twitter.com/nj_tierney">nj_tierney</a>
+### <span style="font-size: 90%;">WOMBAT <br><br> Thursday 28th November, 2019 </span><br><br> <i class="fas  fa-link "></i> <a href="https://bit.ly/njt-wombat">bit.ly/njt-wombat</a><br><br><i class="fab  fa-twitter "></i> <a href="https://twitter.com/nj_tierney">nj_tierney</a>
 
 ---
 
 
 layout: true
-&lt;div class="my-footer"&gt;&lt;span&gt;bit.ly/njt-ozvis • @nj_tierney&lt;/span&gt;&lt;/div&gt; 
+&lt;div class="my-footer"&gt;&lt;span&gt;bit.ly/njt-wombat • @nj_tierney&lt;/span&gt;&lt;/div&gt; 
 
 
 
@@ -33,15 +33,9 @@ layout: true
 
 
 ---
-class: inverse, middle, centre
+class: inverse, middle, center
 
-.huge[
-(My) Background
-]
-
-???
-
- I want to talk a bit about where I've started from, because I think it might be useful to understand my perspective, and why I'm interested in doing these things.
+# A Bit About Me
 
 ---
 
@@ -63,61 +57,6 @@ Undergraduate in Psychology
 
 ---
 
-## Background: Honours
-
-.left-code.medium.center[
-Psychophysics: illusory contours in 3D
-
-&lt;img src="imgs/phil-grove.jpeg" width="40%" style="display: block; margin: auto;" /&gt;
-
-Phil Grove
-
-]
-
-.right-plot[
-&lt;img src="imgs/kanizsa-triangle.png" width="444" style="display: block; margin: auto;" /&gt;
-]
-
----
-
-## Background: Honours
-
-.left-code.medium.center[
-&lt;img src="imgs/christina-lee.jpeg" width="60%" style="display: block; margin: auto;" /&gt;
-
-Christina Lee
-
-]
-
-.right-plot.medium[
-&gt; If every psychologist in the world delivered gold standard smoking cessation therapy, the rate of smoking would still increase. You need to change policy to make change. To make effective policy, you need to have good data, and do good statistics.
-]
-
-???
-
-I discovered an interest in public health and statistics.
-
----
-
-## Background: PhD
-
-.left-code.medium.center[
-&lt;img src="imgs/kerrie.jpg" width="60%" style="display: block; margin: auto;" /&gt;
-
-Kerrie Mengersen
-
-]
-
-.right-plot.medium[
-- _Statistical Approaches to Revealing Structure in Complex Health Data_
-- Exploring missing values
-- Bayesian Models of people's health over time
-- Geospatial statistics of cardiac arrest
-- Fun, applied, real data, real people
-]
-
----
-
 ## Background: PhD
 
 .pull-left.large[
@@ -131,26 +70,6 @@ Kerrie Mengersen
 &lt;img src="imgs/bw-mountains.jpg" width="1778" style="display: block; margin: auto;" /&gt;
 
 ]
-
-???
-
-I started a PhD in statistics at QUT, under (now distinguished) Professor Kerrie Mengersen, Looking at people's health over time.
-
-- There were several things that I noticed:
-  - There were equations, but not as many clear-cut, black and white answers
-  
-
----
-
-## 😱 Missing Values
-
-&lt;img src="imgs/fig-1-miss-map-1.png" width="469" style="display: block; margin: auto;" /&gt;
-  
-???
-
-## Journey of Analytic Discovery
-
-- map
 
 ---
 
@@ -170,35 +89,29 @@ I started a PhD in statistics at QUT, under (now distinguished) Professor Kerrie
 ]
 
 
-  
+
 ---
 
-## Background: PhD - But in psych
+# EDA: Why it's worth it
 
-.pull-left.large[
-- Focus on experiment design
-- No focus on exploring data
-- Exploring data felt...wrong?
-- But it was so critical.
-]
+--
 
-.pull-right[
-&lt;img src="imgs/sound-barrier.jpg" width="853" style="display: block; margin: auto;" /&gt;
+&lt;img src="gifs/dino-saurus.gif" style="display: block; margin: auto;" /&gt;
 
-]
+-- From ["Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing"](https://www.autodeskresearch.com/publications/samestats)
 
 
 ---
 
 ## (My personal) motivation
 
-.large[
+.large.pull-left[
 A lot of research in new statistical methods - imputation, inference, prediction
 ]
 
 --
 
-.large[
+.large.pull-right[
 Not much research on how we explore our data, and the methods that we use to do this.
 ]
 
@@ -229,26 +142,6 @@ Design and improve tools for (exploratory) data analysis
 ]
 
 ---
-    
-# EDA: Exploratory Data Analysis
-
-.large[
-&gt; ...EDA is an approach to analyzing data sets to summarize their main characteristics, often with visual methods. (Wikipedia)
-
-John Tukey, Frederick Mosteller, Bill Cleveland, Dianne Cook, Heike Hoffman, Rob Hyndman, Hadley Wickham
-]
-
----
-
-# EDA: Why it's worth it
-
---
-
-&lt;img src="gifs/dino-saurus.gif" style="display: block; margin: auto;" /&gt;
-
--- From ["Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing"](https://www.autodeskresearch.com/publications/samestats)
-
----
 class: inverse, middle, center
 
 
@@ -269,70 +162,6 @@ class: inverse, middle, center
 ]
 ]
 ]
-
----
-
-## `visdat`
-
-.pull-left[
-&lt;img src="imgs/hex-visdat.png" width="231" style="display: block; margin: auto;" /&gt;
-]
-
-.pull-right[
-
-[![rOpenSci Badge](https://badges.ropensci.org/87_status.svg)](https://github.com/ropensci/onboarding/issues/87)[![JOSS status](http://joss.theoj.org/papers/c85f57adbc565b064fb4bfc9b59a1b2a/status.svg)](http://joss.theoj.org/papers/c85f57adbc565b064fb4bfc9b59a1b2a)[![DOI](https://zenodo.org/badge/50553382.svg)](https://zenodo.org/badge/latestdoi/50553382)
-
-&gt; published under "visdat: Visualising Whole Data Frames" in the Journal of Open Source Software
-
-]
-
----
-
-
-## `visdat::vis_dat(airquality)`
-
-&lt;img src="figures/show-visdat-1.png" width="150%" style="display: block; margin: auto;" /&gt;
-
-
----
-
-## `visdat::vis_miss(airquality)`
-
-&lt;img src="figures/show-vis-miss-1.png" width="150%" style="display: block; margin: auto;" /&gt;
-
-
----
-
-## `naniar`
-
-.left-code[
-&lt;img src="imgs/hex-naniar.png" width="231" style="display: block; margin: auto;" /&gt;
-]
-
-.right-plot.large[
-  
-Tierney, NJ. Cook, D. "Expanding tidy data principles to facilitate missing data exploration, visualization and assessment of imputations." [[Pre-print](https://arxiv.org/abs/1809.02264)]
-
-]
-
----
-
-## `naniar::gg_miss_var(airquality)`
-
-&lt;img src="figures/gg-miss-var-1.png" width="150%" style="display: block; margin: auto;" /&gt;
-
----
-
-### `naniar::gg_miss_var(airquality, facet = Month)`
-
-&lt;img src="figures/gg-miss-var-facet-1.png" width="150%" style="display: block; margin: auto;" /&gt;
-
-
----
-
-## `naniar::gg_miss_upset(airquality)`
-
-&lt;img src="figures/gg-miss-upset-1.png" width="150%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -370,7 +199,7 @@ class: inverse, middle,
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1910 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 172.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -393,12 +222,12 @@ class: inverse, middle,
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1910 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 172.700 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1920 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 172.846 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -421,17 +250,17 @@ class: inverse, middle,
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1910 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 172.700 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1920 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 172.846 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1960 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 176.300 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 176 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -454,22 +283,22 @@ class: inverse, middle,
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1910 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 172.700 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1920 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 172.846 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 173 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1960 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 176.300 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 176 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Australia &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 1970 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 178.400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 178 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -477,11 +306,7 @@ class: inverse, middle,
 
 ---
 
-&lt;img src="figures/reveal-height-1.gif" width="150%" style="display: block; margin: auto;" /&gt;
-
----
-
-&lt;img src="figures/gg-example-1.png" width="150%" style="display: block; margin: auto;" /&gt;
+&lt;img src="gifs/reveal-height-1.gif" width="150%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -499,15 +324,9 @@ class: inverse, middle,
 
 ---
 
-# ... And Afghanistan and Albania
-
-&lt;img src="figures/sample-more-heights-1.png" width="936" style="display: block; margin: auto;" /&gt;
-
----
-
 # And the rest?
 
-&lt;img src="figures/animate-all-data-1.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="gifs/animate-all-data-1.gif" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -536,35 +355,24 @@ class: inverse, middle,
 
 ---
 
-# Does transparency help?
+# Answers: Transparency?
+
+--
 
 &lt;img src="figures/gg-show-all-w-alpha-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Does transparency + a model help?
+# Answers: Transparency + a model?
 
 &lt;img src="figures/gg-show-all-w-model-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 ???
 
 - This helps reduce the overplotting
+- It's not that this is wrong, it is useful - but we lose the individuals
 - We only get the overall average. We dont get the rest of the information
-
----
-
-# This is still useful
-
-&lt;img src="figures/show-height-lm-1.png" width="936" style="display: block; margin: auto;" /&gt;
-
-???
-
-- We get information on what the average is, and how that behaves
-- But we don't get the full story
-- So, it depends on your need. If you have a designed experiment, where you stated that you would run some analysis, then you are doing this.
-- ... But even then, wouldn't you rather _explore_ the data?
-- Who fits the models well / worst / best?
-
+- How do we even get started?
 ---
 
 
@@ -577,21 +385,6 @@ class: inverse, middle,
 - The model might make some good overall predictions
 - But it can be really _ill suited_ for some individual
 - Exploring this is somewhat clumsy - we need another way to explore
-
-
----
-
-# How do we get the most out of this plot?
-
-
-&lt;img src="figures/gg-height-highlight-2-1.png" width="936" style="display: block; margin: auto;" /&gt;
-
----
-
-# How do I even get started?!
-
-
-&lt;img src="figures/gg-height-highlight-3-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 ---
 class: inverse, middle 
@@ -606,11 +399,6 @@ Problem #1: How do I look at **some** of the data?
 Problem #2: How do I find **interesting** observations?
 ]
 
---
-
-.large[
-Problem #3: How do I **understand** my statistical model
-]
 
 ---
 
@@ -644,9 +432,12 @@ class: inverse, middle, center
 
 # What is longitudinal data?
 
+--
+
 .vlarge[
 &gt; Something observed sequentially over time
 ]
+
 ---
 class: inverse, middle, center
 
@@ -820,17 +611,17 @@ sample_n_keys(heights, 5)
 
 
 ```
-## # A tsibble: 56 x 3 [!]
+## # A tsibble: 61 x 3 [!]
 ## # Key:       country [5]
 ##   country  year height_cm
 ##   &lt;chr&gt;   &lt;dbl&gt;     &lt;dbl&gt;
-## 1 Hungary  1730      167.
-## 2 Hungary  1740      168.
-## 3 Hungary  1750      167.
-## 4 Hungary  1760      167 
-## 5 Hungary  1770      162.
-## 6 Hungary  1780      163.
-## # … with 50 more rows
+## 1 Canada   1810      172.
+## 2 Canada   1820      172.
+## 3 Canada   1830      172.
+## 4 Canada   1840      170.
+## 5 Canada   1850      172.
+## 6 Canada   1860      172 
+## # … with 55 more rows
 ```
 
 ---
@@ -844,41 +635,43 @@ sample_n_keys(heights, 5)
 # Problem #1: How do I look at **some** of the data?
 
 
-.large.left[
+.large[
 ~~Look at subsamples~~
-]
-
-.large.right[
-Sample **keys**
 ]
 
 --
 
-.large.left[
+.large[
+Sample **keys** with `sample_n_keys()`
+]
+
+--
+
+.large[
 Look at **many** subsamples
 ]
 
 --
 
-.large.right[
+.largeright[
 **?**
 ]
 
 ---
 
-# Look at many subsamples
+# Portion out your spaghetti! 🍝 🍝 🍝 🍝
 
 &lt;img src="figures/all-heights-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Look at many subsamples
+# Look at **one** set of subsamples 🍝
 
 &lt;img src="figures/all-heights-samples-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Look at many subsamples
+# Look at **many** subsamples 🍝 🍝
 
 &lt;img src="figures/heights-strata-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
@@ -912,6 +705,10 @@ Look at **many** subsamples
 
 ---
 
+&lt;iframe width="1020" height="630" src="https://www.youtube.com/embed/AbSehcT19u0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
 # Distraction threshold (time to rabbit hole)
 
 --
@@ -924,8 +721,11 @@ Look at **many** subsamples
 --
 
 .large[
-&gt; If you have to solve 3+ substantial smaller problems in order to solve a larger problem, your focus shifts from the current goal to something else. 
-You are distracted.
+&gt; If solving a problem requires solving **3+ smaller problems**
+
+&gt; Your focus shifts from the current goal to something else. 
+
+&gt; You are distracted.
 
 ]
 
@@ -970,6 +770,11 @@ Do I want `length.out` or `times`?
 
 ---
 
+&lt;img src="imgs/what-year-is-it.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
 # Avoiding the rabbit hole
 
 --
@@ -993,11 +798,13 @@ We need to make things **as easy as reasonable**, with the least amount of distr
 
 ---
 
-# Removing the distraction threshold means asking the most relevant question
+# Remove distraction by asking relevant questions
 
 --
 
 .large[
+&gt; How many keys per facet?
+
 &gt; How many plots do I want to look at?
 ]
 
@@ -1052,7 +859,11 @@ ggplot(heights,
 
 ---
 
-# `facet_strata()`: See all individuals
+# How to see all individuals?
+
+--
+
+# `facet_strata()`
 
 
 ```r
@@ -1112,7 +923,6 @@ ggplot(heights,
 
 
 ```r
-ggplot + 
   facet_sample(
 *   n_per_facet = 10,
 *   n_facets = 12
@@ -1128,7 +938,6 @@ ggplot +
 
 
 ```r
-ggplot + 
   facet_strata(
 *   n_strata = 10,
     ) 
@@ -1217,42 +1026,46 @@ View all subsamples
 
 ## Problem #2: How do I find **interesting** observations?
 
-&lt;img src="figures/quite-interesting-obs-1.png" width="936" style="display: block; margin: auto;" /&gt;
-
----
-
-## Problem #2: How do I find **interesting** observations?
-
 &lt;img src="figures/quite-interesting-obs-2-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 ---
 class: inverse, center, middle
 
 .huge[
-**Define** interesting?
+**A workflow** 
+]
+
+--
+
+.huge[
+**Define what is interesting**
 ]
 
 
 ---
 
-## Identify features: summarise down to one observation
+### Define what is interesting (maximum)
+
+--
+
+### Identify features: Summarise to one observation per **key**
 
 
 
 
-&lt;img src="figures/anim-line-flat-max-1.gif" style="display: block; margin: auto;" /&gt;
+&lt;img src="gifs/anim-line-flat-max-1.gif" style="display: block; margin: auto;" /&gt;
 
 
 ---
 
-## Identify features: summarise down to one observation
+### Identify features: Summarise to one observation per **key**
 
 &lt;img src="figures/show-line-range-point-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 
 ---
 
-## Identify features: summarise down to one observation
+### Identify features: Summarise to one observation per **key**
 
 &lt;img src="figures/gg-show-point-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
@@ -1418,39 +1231,6 @@ heights %&gt;%
 
 ---
 
-## features: Summaries that are **aware of data structure** &lt;img src="https://feasts.tidyverts.org/reference/figures/logo.png" align="right" height=140/&gt;
-
---
-
-
-```r
-heights %&gt;%
-  features(height_cm, #&lt;&lt; # variable we want to summarise
-           feat_five_num) #&lt;&lt; # feature to calculate
-```
-
---
-
-
-```
-## # A tibble: 144 x 6
-##   country       min   q25   med   q75   max
-##   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Afghanistan  161.  164.  167.  168.  168.
-## 2 Albania      168.  168.  170.  170.  170.
-## 3 Algeria      166.  168.  169   170.  171.
-## 4 Angola       159.  160.  167.  168.  169.
-## 5 Argentina    167.  168.  168.  170.  174.
-## 6 Armenia      164.  166.  169.  172.  172.
-## # … with 138 more rows
-```
-
----
-class: middle, center
-# Other available `features()` in `brolgar` 
-
----
-
 ## What is the range of the data? `feat_ranges`
 
 
@@ -1539,260 +1319,10 @@ Such as:
 
 - `feat_acf`: autocorrelation-based features
 - `feat_stl`: STL (Seasonal, Trend, and Remainder by LOESS) decomposition
+- [Create your own features (from brolgar.njtierney.com)](http://brolgar.njtierney.com/articles/finding-features.html#creating-your-own-features)
 ]
 
 
----
-
-## features: what is `feat_five_num?` &lt;img src="https://feasts.tidyverts.org/reference/figures/logo.png" align="right" height=140/&gt;
-
---
-
-
-```r
-feat_five_num
-```
-
-```
-## function(x, ...) {
-##   list(
-##     min = b_min(x, ...),
-##     q25 = b_q25(x, ...),
-##     med = b_median(x, ...),
-##     q75 = b_q75(x, ...),
-##     max = b_max(x, ...)
-##   )
-## }
-## &lt;bytecode: 0x7fa11b5b9d28&gt;
-## &lt;environment: namespace:brolgar&gt;
-```
-
-
----
-
-## features: what is `feat_five_num?` &lt;img src="https://feasts.tidyverts.org/reference/figures/logo.png" align="right" height=140/&gt;
-
-.huge[
-[Create your own features (from brolgar.njtierney.com)](http://brolgar.njtierney.com/articles/finding-features.html#creating-your-own-features)
-]
-
-
----
-
-# ~~Problem #1: How do I look at **some** of the data?~~
-
---
-
-# Problem #2: How do I find **interesting** observations?
-
---
-
-.large[
-- Decide what features are interesting
-- Summarise down to one observation
-- Decide how to filter 
-- Join this feature back to the data
-]
-
----
-
-# ~~Problem #1: How do I look at **some** of the data?~~
-
-# ~~Problem #2: How do I find **interesting** observations?~~
-
---
-
-# Problem #3: How do I **understand** my statistical model
-
-
----
-
-# Problem #3: How do I **understand** my statistical model
-
-.medium[
-Let's fit a simple mixed effects model to the data
-
-Fixed effect of year + Random intercept for country
-]
-
-
-```r
-heights_fit &lt;- lmer(height_cm ~ year + (1|country), heights)
-
-heights_aug &lt;- heights %&gt;%
-  add_predictions(heights_fit, var = "pred") %&gt;%
-  add_residuals(heights_fit, var = "res")
-```
-
----
-
-# Problem #3: How do I **understand** my statistical model
-
-
-
-```
-## # A tsibble: 1,490 x 5 [!]
-## # Key:       country [144]
-##    country      year height_cm  pred    res
-##    &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Afghanistan  1870      168.  164.  4.59 
-##  2 Afghanistan  1880      166.  164.  1.52 
-##  3 Afghanistan  1930      167.  166.  0.823
-##  4 Afghanistan  1990      167.  168. -1.04 
-##  5 Afghanistan  2000      161.  169. -7.10 
-##  6 Albania      1880      170.  168.  2.39 
-##  7 Albania      1890      170.  168.  1.73 
-##  8 Albania      1900      169.  168.  0.769
-##  9 Albania      2000      168.  172. -4.14 
-## 10 Algeria      1910      169.  168.  1.28 
-## # … with 1,480 more rows
-```
-
----
-
-# Problem #3: How do I **understand** my statistical model
-
-&lt;img src="figures/fits-1.png" width="936" style="display: block; margin: auto;" /&gt;
-
----
-
-## Look at subsamples?
-
---
-
-&lt;img src="figures/subsamples-heights-1.png" width="936" style="display: block; margin: auto;" /&gt;
-
-
----
-
-## Look at **many** subsamples?
-
---
-
-
-```r
-gg_heights_fit + facet_sample()
-```
-
-&lt;img src="figures/heights-fit-facet-sample-1.png" width="70%" style="display: block; margin: auto;" /&gt;
-
----
-
-## Look at **all** subsamples?
-
-
-```r
-gg_heights_fit + facet_strata()
-```
-
-&lt;img src="figures/heights-fit-facet-strata-1.png" width="70%" style="display: block; margin: auto;" /&gt;
-
----
-
-## Look at **all** subsamples **along** residuals?
-
-
-```r
-gg_heights_fit + facet_strata(along = -res)
-```
-
-&lt;img src="figures/heights-fit-facet-strata-res-1.png" width="70%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Look at the predictions with the data?
-
-
-```r
-set.seed(2019-11-13)
-heights_sample &lt;- 
-heights_aug %&gt;%
-  sample_n_keys(size = 9) %&gt;% #&lt;&lt; sample the data
-  ggplot(aes(x = year,
-             y = pred,
-             group = country)) + 
-  geom_line() +
-  facet_wrap(~country)
-
-heights_sample
-```
-
----
-
-# Look at the predictions with the data?
-
-&lt;img src="figures/small-sample-out-1.png" width="100%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Look at the predictions with the data?
-
-
-```r
-heights_sample + geom_point(aes(y = height_cm))
-```
-
-&lt;img src="figures/small-sample-add-real-data-1.png" width="70%" style="display: block; margin: auto;" /&gt;
-
----
-
-# What if we grabbed a sample of those who have the best, middle, and worst residuals? 
-
---
-
-
-```r
-summary(heights_aug$res)
-```
-
-```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -8.1707 -1.6202 -0.1558  0.0000  1.3545 12.1729
-```
-
---
-
-.large[
-Which countries are **nearest** to these statistics?
-]
-
----
-
-# use `keys_near()`
-
-.pull-left[
-
-```r
-heights_aug %&gt;%
-  keys_near(key = country,
-            var = res)
-```
-
-```
-## # A tibble: 6 x 5
-##   country       res stat  stat_value stat_diff
-##   &lt;chr&gt;       &lt;dbl&gt; &lt;fct&gt;      &lt;dbl&gt;     &lt;dbl&gt;
-## 1 Ireland    -8.17  min       -8.17   0       
-## 2 Azerbaijan -1.62  q_25      -1.62   0.000269
-## 3 Laos       -0.157 med       -0.156  0.00125 
-## 4 Mongolia   -0.155 med       -0.156  0.00125 
-## 5 Egypt       1.35  q_75       1.35   0.000302
-## 6 Poland     12.2   max       12.2    0
-```
-]
-
-.pull-right[
-
-
-&gt; This shows us the keys that closely match the five number summary. 
-
-]
-
----
-
-## Show data by joining it with residuals, to explore spread
-
-&lt;img src="figures/plot-join-aug-1.png" width="936" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1823,22 +1353,19 @@ heights_aug %&gt;%
 
 ---
 
-# Take homes
-
-## Problem #3: How do I **understand** my statistical model
+# Future Directions
 
 .large[
-1. Look at (one, more or all!) subsamples
-1. Arrange subsamples
-1. Find keys near some summary 
-1. Join keys to data to explore representatives
+- More features
+- Generalise beyond time series
+- Explore stratification process
 ]
 
 ---
 
 # Thanks
 
-.large[
+.medium[
 - Di Cook
 - Tania Prvan
 - Stuart Lee
@@ -1846,6 +1373,7 @@ heights_aug %&gt;%
 - Earo Wang
 - Rob Hyndman
 - Miles McBain
+- Hadley Wickham
 - Monash University
 ]
 
@@ -1880,7 +1408,7 @@ heights_aug %&gt;%
 .large[
 <i class="fas  fa-box-open "></i> [brolgar.njtierney.com](http://brolgar.njtierney.com/)
 
-<i class="fas  fa-link "></i> [bit.ly/njt-ozvis](https://bit.ly/njt-ozvis)
+<i class="fas  fa-link "></i> [bit.ly/njt-wombat](https://bit.ly/njt-wombat)
 
 <i class="fab  fa-twitter "></i> nj_tierney
 
@@ -1896,25 +1424,6 @@ heights_aug %&gt;%
 .vhuge[
 **End.**
 ]
-
-???
-
-- now let's go through these same principles:
-  - Sample the fits
-  - Many samples of the fits
-  - Explore the residuals
-  - Find the best, worst, middle of the ground residuals
-  - follow the "gliding" process again.
-  
-- Which are most similar to which stats?
-  - "who is similar to me?"
-  - "who is the most average?"
-  - "who is the most extreme?"
-  - "Who is the most different to me?"
-
-# EDA: Why it's worth it
-
-Anscombe's quartet
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
